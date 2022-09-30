@@ -1,0 +1,114 @@
+.chat-list {
+  float: left;
+  width: 40%;
+}
+
+.chat-list-active {
+  transform: translateY(0%);
+}
+
+.search-section {
+  height: 30px;
+  margin-bottom: 40px;
+}
+.search-input {
+  width: 92%;
+  float: left;
+  padding: 15px 10px;
+  border: none;
+  border-radius: 18px 0px 0px 18px;
+  outline: none;
+}
+
+.search-icon {
+  width: 8%;
+  height: 45px;
+  float: left;
+  color: rgb(172, 172, 172);
+  background-color: white;
+  border-radius: 0px 18px 18px 0px;
+  padding-right: 10px;
+}
+
+.chats {
+  display: block;
+  height: 70vh;
+  overflow-y: scroll;
+  scrollbar-width: 0px;
+}
+
+.chats::-webkit-scrollbar {
+  display: none;
+}
+
+.user-chat {
+  padding: 10px;
+  margin-bottom: 20px;
+  background-color: white;
+  border-radius: 18px;
+  position: relative;
+}
+
+.profile-photo {
+  float: left;
+  width: 50px;
+  height: 50px;
+  margin-right: 15px;
+  overflow: hidden;
+  border-radius: 50px;
+}
+
+.profile-photo > img {
+  object-position: center;
+  height: 50px;
+}
+
+.chat-details {
+  padding: 1px;
+}
+
+.chat-message {
+  font-size: 14px;
+  color: #a2a8be;
+}
+
+.chat-title,
+.chat-message {
+  margin: 5px 0px 5px 0px;
+}
+
+.message-notification {
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  top: 15px;
+  right: 10px;
+  background-color: #fa4069;
+  border-radius: 50%;
+}
+
+.chats-icon-open {
+  display: none;
+  width: 50px;
+  padding: 15px;
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  color: white;
+  background-color: rgb(148, 66, 255);
+  border-radius: 0% 0% 50% 50%;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.chats-icon-close {
+  display: none;
+  margin-top: 4%;
+  text-align: center;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}

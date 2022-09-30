@@ -1,0 +1,30 @@
+.container {
+  height: 100vh;
+  margin: 0;
+  padding: 57px 77px;
+  float: left;
+  width: 70%;
+  background-color: #f4f7fe;
+  border-radius: 40px 0px 0px 40px;
+}
+
+.title {
+  font-size: 39.06px;
+  color: #ffffff;
+  letter-spacing: -0.05em;
+}
+
+.fact-list {
+  color: #ffffff;
+  margin: auto;
+}
+
+.fact-list li {
+  font-size: 16px;
+  margin: 20px;
+}
+
+.fact-list li::marker {
+  color: #61dafb;
+  font-size: 1.4rem;
+}
