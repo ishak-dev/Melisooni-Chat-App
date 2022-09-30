@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/Melisooni-Chat-App/static/css/main.5e87ad28.css",
+    "main.js": "/Melisooni-Chat-App/static/js/main.59f90792.js",
+    "static/js/787.f58369eb.chunk.js": "/Melisooni-Chat-App/static/js/787.f58369eb.chunk.js",
+    "static/media/profile1.jpg": "/Melisooni-Chat-App/static/media/profile1.ce45b549d9990de666f4.jpg",
+    "index.html": "/Melisooni-Chat-App/index.html",
+    "main.5e87ad28.css.map": "/Melisooni-Chat-App/static/css/main.5e87ad28.css.map",
+    "main.59f90792.js.map": "/Melisooni-Chat-App/static/js/main.59f90792.js.map",
+    "787.f58369eb.chunk.js.map": "/Melisooni-Chat-App/static/js/787.f58369eb.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5e87ad28.css",
+    "static/js/main.59f90792.js"
+  ]
+}
