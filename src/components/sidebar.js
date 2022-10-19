@@ -1,4 +1,5 @@
 import React from "react";
+import { Routes, Route, Link } from "react-router-dom";
 import "../style/sidebar.css";
 import {
   FaHome,
@@ -25,22 +26,30 @@ const Sidebar = (data) => {
         </div>
         <div className="sidebar-options">
           <ul>
-            <li>
-              <FaHome className="icon" />
-              PROPERTIES
-            </li>
-            <li>
-              <FaComment className="icon" />
-              CHATS
-            </li>
-            <li>
-              <FaCalendar className="icon" />
-              CALENDAR
-            </li>
-            <li>
-              <FaEllipsisV className="icon" />
-              SETTINGS
-            </li>
+            <Link to="/properties" className="link">
+              <li>
+                <FaHome className="icon" />
+                PROPERTIES
+              </li>
+            </Link>
+            <Link to="/" className="link">
+              <li>
+                <FaComment className="icon" />
+                CHATS
+              </li>
+            </Link>
+            <Link to="/calendar" className="link">
+              <li>
+                <FaCalendar className="icon" />
+                CALENDAR
+              </li>
+            </Link>
+            <Link to="settings" className="link">
+              <li>
+                <FaEllipsisV className="icon" />
+                SETTINGS
+              </li>
+            </Link>
           </ul>
         </div>
       </div>
