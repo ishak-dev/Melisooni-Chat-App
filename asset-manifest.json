@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/Melisooni-Chat-App/static/css/main.a98bfa15.css",
-    "main.js": "/Melisooni-Chat-App/static/js/main.99ec7e91.js",
+    "main.css": "/Melisooni-Chat-App/static/css/main.24a6cbc7.css",
+    "main.js": "/Melisooni-Chat-App/static/js/main.6aa3dfea.js",
     "static/js/787.f58369eb.chunk.js": "/Melisooni-Chat-App/static/js/787.f58369eb.chunk.js",
     "static/media/profile1.jpg": "/Melisooni-Chat-App/static/media/profile1.ce45b549d9990de666f4.jpg",
     "index.html": "/Melisooni-Chat-App/index.html",
-    "main.a98bfa15.css.map": "/Melisooni-Chat-App/static/css/main.a98bfa15.css.map",
-    "main.99ec7e91.js.map": "/Melisooni-Chat-App/static/js/main.99ec7e91.js.map",
+    "main.24a6cbc7.css.map": "/Melisooni-Chat-App/static/css/main.24a6cbc7.css.map",
+    "main.6aa3dfea.js.map": "/Melisooni-Chat-App/static/js/main.6aa3dfea.js.map",
     "787.f58369eb.chunk.js.map": "/Melisooni-Chat-App/static/js/787.f58369eb.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.a98bfa15.css",
-    "static/js/main.99ec7e91.js"
+    "static/css/main.24a6cbc7.css",
+    "static/js/main.6aa3dfea.js"
   ]
 }
