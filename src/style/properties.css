@@ -1,7 +1,7 @@
 .properties-container {
   max-height: 70vh;
   display: grid;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: 200px 200px 200px;
   padding: 10px;
   overflow-y: scroll;
 }
@@ -15,7 +15,35 @@
 
   color: rgb(72, 21, 92);
   text-align: center;
-  padding: 20px;
+  padding: 0px 20px;
   margin: 4px;
   border-radius: 14px;
+  max-width: 220px;
+}
+
+.properties-info {
+  align-items: center;
+  display: flex;
+}
+
+.properties-info-img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: auto;
+}
+
+.properties-info-username {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.activity {
+  font-size: 14px;
+  font-weight: bold;
+  margin-top: 0px;
+}
+
+.active {
+  color: rgb(42, 179, 42);
 }
