@@ -32,7 +32,7 @@ const Sidebar = (data) => {
                 PROPERTIES
               </li>
             </Link>
-            <Link to="/" className="link">
+            <Link to="/Melisooni-Chat-App" className="link">
               <li>
                 <FaComment className="icon" />
                 CHATS

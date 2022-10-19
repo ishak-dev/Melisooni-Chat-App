@@ -3,7 +3,7 @@ import Sidebar from "./sidebar";
 import Main from "./main";
 import "../style/mobile-optimization.css";
 import "../style/home.css";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 import Properties from "./properties";
 import Calendar from "./calendar";
 import Settings from "./settings";
@@ -53,7 +53,10 @@ const Home = () => {
           <Sidebar name={userName} surname={userSurname} />
 
           <Routes>
-            <Route path="/" element={<Main name={userName} />} />
+            <Route
+              path="/Melisooni-Chat-App"
+              element={<Main name={userName} />}
+            ></Route>
             <Route path="/properties" element={<Properties />} />
             <Route path="/calendar" element={<Calendar />} />
             <Route path="/settings" element={<Settings />} />
