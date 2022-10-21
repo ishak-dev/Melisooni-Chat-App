@@ -1,5 +1,5 @@
 .properties {
-  padding: 67px 50px;
+  padding: 67px 0px;
 }
 
 .properties-container {
@@ -19,6 +19,7 @@
   padding: 0px 20px;
   margin: 4px;
   border-radius: 14px;
+  width: 23%;
   max-width: 220px;
 }
 
