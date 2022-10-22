@@ -43,6 +43,18 @@
   .container {
     padding: 5%;
   }
+
+  .properties{
+    height: 100vh;
+  }
+
+  .properties-item{
+    width: 47% !important;
+
+  }
+  .properties-item p{
+    font-size: 12px;
+  }
 }
 
 @media only screen and (max-height: 400px) {
