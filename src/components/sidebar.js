@@ -26,25 +26,25 @@ const Sidebar = (data) => {
         </div>
         <div className="sidebar-options">
           <ul>
-            <Link to="/properties" className="link">
+            <Link to="/properties" className="link" onClick={openSidebar}>
               <li>
                 <FaHome className="icon" />
                 PROPERTIES
               </li>
             </Link>
-            <Link to="/Melisooni-Chat-App" className="link">
+            <Link to="/Melisooni-Chat-App" className="link" onClick={openSidebar}>
               <li>
                 <FaComment className="icon" />
                 CHATS
               </li>
             </Link>
-            <Link to="/calendar" className="link">
+            <Link to="/calendar" className="link" onClick={openSidebar}>
               <li>
                 <FaCalendar className="icon" />
                 CALENDAR
               </li>
             </Link>
-            <Link to="settings" className="link">
+            <Link to="settings" className="link" onClick={openSidebar}>
               <li>
                 <FaEllipsisV className="icon" />
                 SETTINGS
