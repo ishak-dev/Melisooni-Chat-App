@@ -12,13 +12,14 @@ import {
 
 const Sidebar = (data) => {
   let [menu, setMenu] = React.useState(false);
+  const windowSize = window.innerWidth;
 
   const openSidebar = () => setMenu((prevState) => !prevState);
 
   console.log(menu);
   return (
     <div>
-      <div className={menu ? "sidebar-active" : "sidebar"}>
+      <div className={menu && windowSize < 600 ? "sidebar-active" : "sidebar"}>
         <div className="profile-info">
           <h3>
             {data.name} {data.surname}
@@ -32,7 +33,11 @@ const Sidebar = (data) => {
                 PROPERTIES
               </li>
             </Link>
-            <Link to="/Melisooni-Chat-App" className="link" onClick={openSidebar}>
+            <Link
+              to="/Melisooni-Chat-App"
+              className="link"
+              onClick={openSidebar}
+            >
               <li>
                 <FaComment className="icon" />
                 CHATS
