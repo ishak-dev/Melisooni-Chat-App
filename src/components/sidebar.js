@@ -43,10 +43,10 @@ const Sidebar = (data) => {
                 CHATS
               </li>
             </Link>
-            <Link to="/calendar" className="link" onClick={openSidebar}>
+            <Link to="/notification" className="link" onClick={openSidebar}>
               <li>
                 <FaCalendar className="icon" />
-                CALENDAR
+                NOTIFICATION
               </li>
             </Link>
             <Link to="settings" className="link" onClick={openSidebar}>

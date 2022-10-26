@@ -5,7 +5,7 @@ import "../style/mobile-optimization.css";
 import "../style/home.css";
 import { Route, Routes, Navigate } from "react-router-dom";
 import Properties from "./properties";
-import Calendar from "./calendar";
+import Notification from "./notifications";
 import Settings from "./settings";
 
 const Home = () => {
@@ -58,7 +58,7 @@ const Home = () => {
               element={<Main name={userName} />}
             ></Route>
             <Route path="/properties" element={<Properties />} />
-            <Route path="/calendar" element={<Calendar />} />
+            <Route path="/notification" element={<Notification />} />
             <Route path="/settings" element={<Settings />} />
           </Routes>
         </>
