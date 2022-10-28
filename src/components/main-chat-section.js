@@ -16,7 +16,7 @@ import {
 } from "firebase/firestore";
 const MainChatSection = (data) => {
   const [message, setMessage] = useState([]);
-
+  console.log(data.id);
   useEffect(() => {
     onSnapshot(
       query(collection(db, "melisa&ishak"), orderBy("time")),

@@ -7,18 +7,46 @@ import { Route, Routes, Navigate } from "react-router-dom";
 import Properties from "./properties";
 import Notification from "./notifications";
 import Settings from "./settings";
-
+import db from "../data/firebase";
+import {
+  collection,
+  getDocs,
+  orderBy,
+  query,
+  onSnapshot,
+  setDoc,
+  doc,
+  addDoc,
+  Timestamp,
+} from "firebase/firestore";
 const Home = () => {
   let [logged, setLogged] = React.useState(false);
   let [userName, setUserName] = React.useState("");
   let [userSurname, setUserSurname] = React.useState("");
+  const [idInput, setIdInput] = React.useState("");
+  const [user, setUser] = React.useState([]);
+
+  React.useEffect(() => {
+    onSnapshot(
+      collection(db, "messegnger-db/users/user-data/" + userName),
+      (snapshot) => {
+        setUser(
+          snapshot.docs.map((doc) => ({
+            id: doc.id,
+            name: doc.data().sender,
+            message: doc.data().message,
+          }))
+        );
+      }
+    );
+  }, [userName]);
 
   function getID() {
     const id = document.querySelector(".input-id").value;
     const loginWindow = document.querySelector(".login");
     const screenAnimation = document.querySelectorAll(".half");
-
-    if (id == "#LOVE") {
+    setUserName("Melisa");
+    /* if (id == "#LOVE") {
       setUserName("Melisa");
       setUserSurname("Karsic");
       loginWindow.style.display = "none";
@@ -30,7 +58,7 @@ const Home = () => {
       loginWindow.style.display = "none";
       screenAnimation.forEach((screen) => screen.classList.add("wave"));
       setLogged(true);
-    }
+    } */
   }
 
   return (

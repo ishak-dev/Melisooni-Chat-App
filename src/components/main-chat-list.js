@@ -5,18 +5,19 @@ import "../style/main-chat-list.css";
 import users from "../data/chats-data";
 import ChatHead from "./chat-head";
 
-const MainChatList = (data) => {
+const MainChatList = ({ friends, openFriendMessage }) => {
   let [dropMenu, setDropMenu] = React.useState(false);
   const activeDropMenu = () => setDropMenu((prevState) => !prevState);
   const deactiveDropMenu = () => setDropMenu((prevState) => !prevState);
 
-  var chats = data.friends.map((data) => {
+  var chats = friends.map((data) => {
     return (
       <ChatHead
         key={data.id}
         id={data.id}
         name={data.name}
         message={"raleee"}
+        openFriendMessage={openFriendMessage}
       />
     );
   });

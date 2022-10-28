@@ -3,13 +3,23 @@ import Profile1 from "../images/profile1.jpg";
 
 const ChatHead = (user) => {
   let [notification, setNotification] = React.useState("message-notification");
-
   function removeNotification() {
     setNotification("");
   }
 
+  function openFriendMessage() {
+    return user.openFriendMessage(user.id);
+  }
+
   return (
-    <div className="user-chat" key={user.id} onClick={removeNotification}>
+    <div
+      className="user-chat"
+      key={user.id}
+      onClick={(event) => {
+        openFriendMessage();
+        removeNotification();
+      }}
+    >
       <div className="profile-photo">
         <img src={Profile1} />
       </div>

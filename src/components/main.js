@@ -16,9 +16,11 @@ import {
   addDoc,
   Timestamp,
 } from "firebase/firestore";
-function Main(data) {
+function Main({ name }) {
   const [friends, setFriends] = React.useState([]);
   const [friendsMessages, setFriendsMessages] = React.useState([]);
+  const [currentMessageWindow, setCurrentMessageWindow] = React.useState("");
+
   useEffect(() => {
     onSnapshot(collection(db, "melisa"), (snapshot) => {
       //snapshot.docs[0].id is the id of document in that collection, that document have their collection
@@ -37,11 +39,19 @@ function Main(data) {
     });
   }, []);
 
+  function openFriendMessage(id) {
+    setCurrentMessageWindow(id);
+  }
+
   return (
     <div className="container">
       <MainHeader />
-      <MainChatList name={data.name} friends={friends} />
-      <MainChatSection name={data.name} />
+      <MainChatList
+        name={name}
+        friends={friends}
+        openFriendMessage={openFriendMessage}
+      />
+      <MainChatSection name={name} id={currentMessageWindow} />
     </div>
   );
 }
