@@ -23,29 +23,35 @@ const Home = () => {
   let [logged, setLogged] = React.useState(false);
   let [userName, setUserName] = React.useState("");
   let [userSurname, setUserSurname] = React.useState("");
-  const [idInput, setIdInput] = React.useState("");
+  const [idInput, setIdInput] = React.useState("dasa");
+  const [password, setPassword] = React.useState("dasa");
   const [user, setUser] = React.useState([]);
 
   React.useEffect(() => {
-    onSnapshot(
-      collection(db, "messegnger-db/users/user-data/" + userName),
-      (snapshot) => {
-        setUser(
-          snapshot.docs.map((doc) => ({
-            id: doc.id,
-            name: doc.data().sender,
-            message: doc.data().message,
-          }))
-        );
-      }
-    );
-  }, [userName]);
+    console.log(idInput);
+    const path = "messenger-db/users/user-data/";
+    onSnapshot(collection(db, path), (snapshot) => {
+      console.log(snapshot.docs.includes(idInput));
+      snapshot.docs.includes(idInput) == false
+        ? console.log("User Doesnt exsist")
+        : setUser(
+            snapshot.docs.map((doc) => ({
+              id: doc.id,
+              name: doc.data().sender,
+              message: doc.data().message,
+            }))
+          );
+    });
+    console.log(userName);
+  }, [idInput]);
 
   function getID() {
     const id = document.querySelector(".input-id").value;
     const loginWindow = document.querySelector(".login");
     const screenAnimation = document.querySelectorAll(".half");
     setUserName("Melisa");
+    setIdInput("testuserID");
+    setPassword("1234");
     /* if (id == "#LOVE") {
       setUserName("Melisa");
       setUserSurname("Karsic");
