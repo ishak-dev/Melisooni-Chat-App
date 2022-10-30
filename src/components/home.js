@@ -21,50 +21,37 @@ import {
 } from "firebase/firestore";
 const Home = () => {
   let [logged, setLogged] = React.useState(false);
-  let [userName, setUserName] = React.useState("");
-  let [userSurname, setUserSurname] = React.useState("");
-  const [idInput, setIdInput] = React.useState("dasa");
-  const [password, setPassword] = React.useState("dasa");
+  const [idInput, setIdInput] = React.useState("");
   const [user, setUser] = React.useState([]);
 
   React.useEffect(() => {
-    console.log(idInput);
+    let confirm = false;
+    let position = 0;
     const path = "messenger-db/users/user-data/";
     onSnapshot(collection(db, path), (snapshot) => {
-      console.log(snapshot.docs.includes(idInput));
-      snapshot.docs.includes(idInput) == false
-        ? console.log("User Doesnt exsist")
-        : setUser(
-            snapshot.docs.map((doc) => ({
-              id: doc.id,
-              name: doc.data().sender,
-              message: doc.data().message,
-            }))
-          );
+      snapshot.docs.forEach((user, i) => {
+        //check is there id in db that matches with inout id
+        console.log(i);
+        !confirm && user.id == idInput && (confirm = true) && (position = i);
+      });
+
+      if (confirm === true) {
+        setUser({
+          id: snapshot.docs[position].id,
+          ...snapshot.docs[position].data(),
+        });
+        const loginWindow = document.querySelector(".login");
+        const screenAnimation = document.querySelectorAll(".half");
+        loginWindow.style.display = "none";
+        screenAnimation.forEach((screen) => screen.classList.add("wave"));
+        setLogged(true);
+      } else console.log("User Doesnt exist");
     });
-    console.log(userName);
   }, [idInput]);
 
   function getID() {
     const id = document.querySelector(".input-id").value;
-    const loginWindow = document.querySelector(".login");
-    const screenAnimation = document.querySelectorAll(".half");
-    setUserName("Melisa");
-    setIdInput("testuserID");
-    setPassword("1234");
-    /* if (id == "#LOVE") {
-      setUserName("Melisa");
-      setUserSurname("Karsic");
-      loginWindow.style.display = "none";
-      screenAnimation.forEach((screen) => screen.classList.add("wave"));
-      setLogged(true);
-    } else if (id == "#ISO") {
-      setUserName("Ishak");
-      setUserSurname("Kazic");
-      loginWindow.style.display = "none";
-      screenAnimation.forEach((screen) => screen.classList.add("wave"));
-      setLogged(true);
-    } */
+    setIdInput(id);
   }
 
   return (
@@ -84,12 +71,12 @@ const Home = () => {
       </div>
       {logged ? (
         <>
-          <Sidebar name={userName} surname={userSurname} />
+          <Sidebar user={user} />
 
           <Routes>
             <Route
               path="/Melisooni-Chat-App"
-              element={<Main name={userName} />}
+              element={<Main name={user.name} />}
             ></Route>
             <Route path="/properties" element={<Properties />} />
             <Route path="/notification" element={<Notification />} />

@@ -1,6 +1,7 @@
 import React from "react";
 import "../style/settings.css";
 import { FcGoogle } from "react-icons/fc";
+
 const Settings = () => {
   return (
     <div className="settings">
@@ -9,22 +10,22 @@ const Settings = () => {
       <div className="settings-container">
         <div className="first-row row">
           <div className="input-field">
-            <p className>Full Name</p> <span>visible to other members</span>
+            <p>Full Name</p> <span>visible to other members</span>
             <input type="text" placeholder="Your name" />
           </div>
           <div className="input-field">
-            <p className>Your email</p> <span>visible only to you</span>
+            <p>Your email</p> <span>visible only to you</span>
             <input type="text" placeholder="Your email" />
           </div>
         </div>
         <hr className="hr-line" />
         <div className="second-row row">
           <div className="input-field">
-            <p className>Your number</p> <span>visible only to you</span>
+            <p>Your number</p> <span>visible only to you</span>
             <input type="text" placeholder="Your number" />
           </div>
           <div className="input-field">
-            <p className>Your birthday</p> <span>visible only to you</span>
+            <p>Your birthday</p> <span>visible only to you</span>
             <input type="text" placeholder="Your birthday" />
           </div>
         </div>

@@ -10,19 +10,18 @@ import {
   FaReply,
 } from "react-icons/fa";
 
-const Sidebar = (data) => {
+const Sidebar = ({ user }) => {
   let [menu, setMenu] = React.useState(false);
   const windowSize = window.innerWidth;
 
   const openSidebar = () => setMenu((prevState) => !prevState);
 
-  console.log(menu);
   return (
     <div>
-      <div className={menu && windowSize < 600 ? "sidebar-active" : "sidebar"}>
+      <div className={menu && windowSize <= 900 ? "sidebar-active" : "sidebar"}>
         <div className="profile-info">
           <h3>
-            {data.name} {data.surname}
+            {user.name} {user.surname}
           </h3>
         </div>
         <div className="sidebar-options">
