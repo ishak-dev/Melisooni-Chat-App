@@ -16,7 +16,7 @@ import {
   addDoc,
   Timestamp,
 } from "firebase/firestore";
-function Main({ name }) {
+function Main({ user }) {
   const [friends, setFriends] = React.useState([]);
   const [friendsMessages, setFriendsMessages] = React.useState([]);
   const [currentMessageWindow, setCurrentMessageWindow] = React.useState("");
@@ -47,11 +47,11 @@ function Main({ name }) {
     <div className="container">
       <MainHeader />
       <MainChatList
-        name={name}
+        name={user.fullname}
         friends={friends}
         openFriendMessage={openFriendMessage}
       />
-      <MainChatSection name={name} id={currentMessageWindow} />
+      <MainChatSection name={user.fullname} id={currentMessageWindow} />
     </div>
   );
 }

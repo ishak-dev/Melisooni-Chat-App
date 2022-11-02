@@ -23,11 +23,11 @@ const Home = () => {
   let [logged, setLogged] = React.useState(false);
   const [idInput, setIdInput] = React.useState("");
   const [user, setUser] = React.useState([]);
+  const path = "messenger-db/users/user-data/";
 
   React.useEffect(() => {
     let confirm = false;
     let position = 0;
-    const path = "messenger-db/users/user-data/";
     onSnapshot(collection(db, path), (snapshot) => {
       snapshot.docs.forEach((user, i) => {
         //check is there id in db that matches with inout id
@@ -48,6 +48,8 @@ const Home = () => {
       } else console.log("User Doesnt exist");
     });
   }, [idInput]);
+
+  console.log(user);
 
   function getID() {
     const id = document.querySelector(".input-id").value;
@@ -76,11 +78,11 @@ const Home = () => {
           <Routes>
             <Route
               path="/Melisooni-Chat-App"
-              element={<Main name={user.name} />}
+              element={<Main user={user} />}
             ></Route>
             <Route path="/properties" element={<Properties />} />
             <Route path="/notification" element={<Notification />} />
-            <Route path="/settings" element={<Settings />} />
+            <Route path="/settings" element={<Settings user={user} />} />
           </Routes>
         </>
       ) : (

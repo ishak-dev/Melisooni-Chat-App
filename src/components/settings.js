@@ -2,7 +2,7 @@ import React from "react";
 import "../style/settings.css";
 import { FcGoogle } from "react-icons/fc";
 
-const Settings = () => {
+const Settings = ({ user }) => {
   return (
     <div className="settings">
       <h2 className="settings-title">Account</h2>
@@ -11,22 +11,22 @@ const Settings = () => {
         <div className="first-row row">
           <div className="input-field">
             <p>Full Name</p> <span>visible to other members</span>
-            <input type="text" placeholder="Your name" />
+            <input type="text" placeholder={user.fullname} />
           </div>
           <div className="input-field">
             <p>Your email</p> <span>visible only to you</span>
-            <input type="text" placeholder="Your email" />
+            <input type="text" placeholder={user.email} />
           </div>
         </div>
         <hr className="hr-line" />
         <div className="second-row row">
           <div className="input-field">
             <p>Your number</p> <span>visible only to you</span>
-            <input type="text" placeholder="Your number" />
+            <input type="text" placeholder={user.number} />
           </div>
           <div className="input-field">
             <p>Your birthday</p> <span>visible only to you</span>
-            <input type="text" placeholder="Your birthday" />
+            <input type="text" placeholder={user.birthday} />
           </div>
         </div>
         <hr className="hr-line" />

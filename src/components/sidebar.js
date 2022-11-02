@@ -20,9 +20,7 @@ const Sidebar = ({ user }) => {
     <div>
       <div className={menu && windowSize <= 900 ? "sidebar-active" : "sidebar"}>
         <div className="profile-info">
-          <h3>
-            {user.name} {user.surname}
-          </h3>
+          <h3>{user.fullname}</h3>
         </div>
         <div className="sidebar-options">
           <ul>
