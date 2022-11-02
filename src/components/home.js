@@ -78,7 +78,7 @@ const Home = () => {
           <Routes>
             <Route
               path="/Melisooni-Chat-App"
-              element={<Main user={user} />}
+              element={<Main user={user} dbpath={path} />}
             ></Route>
             <Route path="/properties" element={<Properties />} />
             <Route path="/notification" element={<Notification />} />

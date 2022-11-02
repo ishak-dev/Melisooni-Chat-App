@@ -14,12 +14,13 @@ import {
   addDoc,
   Timestamp,
 } from "firebase/firestore";
-const MainChatSection = (data) => {
+const MainChatSection = ({ user, pathfriends }) => {
   const [message, setMessage] = useState([]);
-  console.log(data.id);
+  console.log(pathfriends);
+
   useEffect(() => {
     onSnapshot(
-      query(collection(db, "melisa&ishak"), orderBy("time")),
+      query(collection(db, pathfriends), orderBy("time")),
       (snapshot) => {
         setMessage(
           snapshot.docs.map((doc) => ({
@@ -36,7 +37,11 @@ const MainChatSection = (data) => {
     console.log(mess);
     return (
       <div className="message" key={mess.id}>
-        <p className={mess.name != data.name ? "partner-mesage" : "my-message"}>
+        <p
+          className={
+            mess.name != user.fullname ? "partner-mesage" : "my-message"
+          }
+        >
           {mess.message}
         </p>
       </div>
@@ -47,8 +52,8 @@ const MainChatSection = (data) => {
     let messageFromInput = document.querySelector(".input-message").value;
     console.log(messageFromInput);
 
-    addDoc(collection(db, "melisa&ishak"), {
-      sender: data.name,
+    addDoc(collection(db, pathfriends), {
+      sender: user.fullname,
       message: messageFromInput,
       time: Timestamp.fromDate(new Date()),
     });
