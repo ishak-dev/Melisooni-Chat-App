@@ -14,32 +14,33 @@ import {
   addDoc,
   Timestamp,
 } from "firebase/firestore";
-const MainChatSection = ({ user, pathfriends }) => {
-  const [message, setMessage] = useState([]);
-  console.log(pathfriends);
+const MainChatSection = ({ user, pathFriends, friendName, chatSelected }) => {
+  const [message, setMessage] = useState(() => []);
 
   useEffect(() => {
-    onSnapshot(
-      query(collection(db, pathfriends), orderBy("time")),
-      (snapshot) => {
-        setMessage(
-          snapshot.docs.map((doc) => ({
-            id: doc.id,
-            name: doc.data().sender,
-            message: doc.data().message,
-          }))
-        );
-      }
-    );
-  }, []);
+    chatSelected
+      ? onSnapshot(
+          query(collection(db, pathFriends), orderBy("time")),
+          (snapshot) => {
+            setMessage(
+              snapshot.docs.map((doc) => ({
+                id: doc.id,
+                sender: doc.data().sender,
+                message: doc.data().message,
+              }))
+            );
+          }
+        )
+      : console.log("select chat");
+  }, [pathFriends]);
 
+  console.log(message);
   let messageListDOM = message.map((mess) => {
-    console.log(mess);
     return (
       <div className="message" key={mess.id}>
         <p
           className={
-            mess.name != user.fullname ? "partner-mesage" : "my-message"
+            mess.sender != user.fullname ? "partner-mesage" : "my-message"
           }
         >
           {mess.message}
@@ -48,15 +49,17 @@ const MainChatSection = ({ user, pathfriends }) => {
     );
   });
 
+  console.log("rendered");
+
   function inputMessage() {
     let messageFromInput = document.querySelector(".input-message").value;
-    console.log(messageFromInput);
 
-    addDoc(collection(db, pathfriends), {
-      sender: user.fullname,
-      message: messageFromInput,
-      time: Timestamp.fromDate(new Date()),
-    });
+    messageFromInput != "" &&
+      addDoc(collection(db, pathFriends), {
+        sender: user.fullname,
+        message: messageFromInput,
+        time: Timestamp.fromDate(new Date()),
+      });
 
     document.querySelector(".input-message").value = "";
   }
@@ -68,9 +71,7 @@ const MainChatSection = ({ user, pathfriends }) => {
           <img src={Profile1} />
         </div>
         <div className="chat-details">
-          <h4 className="chat-title">
-            {data.name == "Melisa" ? "Ishak" : "Melisa"}
-          </h4>
+          <h4 className="chat-title">{friendName}</h4>
           <p className="chat-message">From Sarajevo</p>
         </div>
       </div>

@@ -4,41 +4,43 @@ import MainHeader from "./main-header";
 import MainChatList from "./main-chat-list";
 import MainChatSection from "./main-chat-section";
 import db from "../data/firebase";
-import {
-  collection,
-  getDocs,
-  getDoc,
-  orderBy,
-  query,
-  onSnapshot,
-  setDoc,
-  doc,
-  addDoc,
-  Timestamp,
-} from "firebase/firestore";
+import { collection, onSnapshot } from "firebase/firestore";
 function Main({ user, dbpath }) {
   const [friendsList, setFriends] = React.useState([]);
-  const [friendsMessages, setFriendsMessages] = React.useState([]);
-  const [currentMessageWindow, setCurrentMessageWindow] = React.useState("");
 
-  const dbpathFriends = dbpath + user.id + "/friends";
+  const [currentMessageWindow, setCurrentMessageWindow] = React.useState(() => {
+    return {
+      id: "",
+      friendName: "",
+      chatSelected: false,
+    };
+  });
+
+  let dbpathFriends = dbpath + user.id + "/friends";
+
   useEffect(() => {
-    //snapshot.docs[0].id is the id of document in that collection, that document have their collection
     onSnapshot(collection(db, dbpathFriends), (snapshot) => {
-      console.log(snapshot.doc);
+      console.log(snapshot.docs);
       setFriends(
         snapshot.docs.map((doc) => ({
           id: doc.id,
           name: doc.data().name,
         }))
       );
-      //Fetch messages from frends
     });
   }, []);
 
-  function openFriendMessage(id) {
-    setCurrentMessageWindow(id);
+  function openFriendMessage(id, friendName) {
+    setCurrentMessageWindow(() => {
+      return {
+        id: id,
+        friendName: friendName,
+        chatSelected: true,
+      };
+    });
   }
+
+  console.log("Pozvan main");
 
   return (
     <div className="container">
@@ -50,8 +52,11 @@ function Main({ user, dbpath }) {
       />
       <MainChatSection
         user={user}
-        friendid={currentMessageWindow}
-        pathFriends={dbpathFriends}
+        pathFriends={
+          dbpathFriends + "/" + currentMessageWindow.id + "/messages"
+        }
+        friendName={currentMessageWindow.friendName}
+        chatSelected={currentMessageWindow.chatSelected}
       />
     </div>
   );

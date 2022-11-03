@@ -10,12 +10,12 @@ const MainChatList = ({ friends, openFriendMessage }) => {
   const activeDropMenu = () => setDropMenu((prevState) => !prevState);
   const deactiveDropMenu = () => setDropMenu((prevState) => !prevState);
 
-  var chats = friends.map((data) => {
+  var chats = friends.map((friend) => {
     return (
       <ChatHead
-        key={data.id}
-        id={data.id}
-        name={data.name}
+        key={friend.id}
+        id={friend.id}
+        name={friend.name}
         message={"raleee"}
         openFriendMessage={openFriendMessage}
       />

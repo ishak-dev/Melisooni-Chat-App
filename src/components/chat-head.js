@@ -1,20 +1,20 @@
 import React from "react";
 import Profile1 from "../images/profile1.jpg";
 
-const ChatHead = (user) => {
+const ChatHead = (friend) => {
   let [notification, setNotification] = React.useState("message-notification");
   function removeNotification() {
     setNotification("");
   }
 
   function openFriendMessage() {
-    return user.openFriendMessage(user.id);
+    return friend.openFriendMessage(friend.id, friend.name);
   }
 
   return (
     <div
       className="user-chat"
-      key={user.id}
+      key={friend.id}
       onClick={(event) => {
         openFriendMessage();
         removeNotification();
@@ -24,8 +24,8 @@ const ChatHead = (user) => {
         <img src={Profile1} />
       </div>
       <div className="chat-details">
-        <h4 className="chat-title">{user.name}</h4>
-        <p className="chat-message">{user.message}</p>
+        <h4 className="chat-title">{friend.name}</h4>
+        <p className="chat-message">{friend.message}</p>
       </div>
       <div className={notification}></div>
     </div>
