@@ -1,0 +1,37 @@
+.notification-container{
+  padding: 20px;
+  display: flex;
+}
+
+.notification{
+  background-color: #f2f2f2;
+  padding: 5px 15px;
+  border-radius: 14px;
+  width: 100%;
+  cursor: pointer;
+}
+.notification-details{
+  display: flex;
+
+}
+
+.notification-details h2{
+  margin-right:auto;
+
+}
+
+.notification-details p{
+  margin:auto 0px;
+}
+.notification-message{
+  margin-top: -25px;
+  margin-bottom: 15px;
+}
+
+.hide-full-notification{
+  display: -webkit-box;
+-webkit-line-clamp: 2;
+-webkit-box-orient: vertical;
+overflow: hidden;
+text-overflow: ellipsis;
+}
