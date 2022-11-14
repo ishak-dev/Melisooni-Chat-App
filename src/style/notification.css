@@ -15,17 +15,18 @@
 
 }
 
-.notification-details h2{
+.notification-details h3{
   margin-right:auto;
-
 }
 
 .notification-details p{
   margin:auto 0px;
+  font-size: 12px;
 }
 .notification-message{
   margin-top: -25px;
   margin-bottom: 15px;
+  color: grey;
 }
 
 .hide-full-notification{
