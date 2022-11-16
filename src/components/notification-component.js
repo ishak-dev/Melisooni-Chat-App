@@ -3,8 +3,12 @@ import "../style/notification.css";
 const NotificationComponent = ({ activityFunc, activeMessageId, id }) => {
   const [showMessage, setShowMessage] = React.useState(false);
 
+  let active = false;
   function openMessage() {
-    if (activeMessageId == id && showMessage == false) {
+    if (activeMessageId == id) return activityFunc();
+    else return activityFunc(id);
+
+    /* if (activeMessageId == id && showMessage == false) {
       setShowMessage(true);
       return activityFunc(id);
     } else if (activeMessageId == id && showMessage == true) {
@@ -19,7 +23,7 @@ const NotificationComponent = ({ activityFunc, activeMessageId, id }) => {
     } else {
       setShowMessage(false);
       return activityFunc(id);
-    }
+    } */
   }
   console.log(activeMessageId);
   console.log(showMessage);
