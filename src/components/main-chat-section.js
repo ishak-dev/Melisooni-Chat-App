@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "../style/main-chat-section.css";
 import db from "../data/firebase";
 import Profile1 from "../images/profile1.jpg";

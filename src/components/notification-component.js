@@ -35,9 +35,8 @@ const NotificationComponent = ({ activityFunc, activeMessageId, id }) => {
           <p className="notification-time">11:30</p>
         </div>
         <div
-          className={`notification-message ${
-            !(activeMessageId === id) && "hide-full-notification"
-          }`}
+          className={`notification-message ${!(activeMessageId === id) &&
+            "hide-full-notification"}`}
         >
           <p>
             This is test mesage lndas dlansld lnas d ashasjd ahjdhj asd hjashd

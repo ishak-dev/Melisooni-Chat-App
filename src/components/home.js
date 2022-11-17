@@ -117,7 +117,7 @@ const Home = () => {
             />
             <Route
               path="/properties"
-              element={<Properties friendsList={friendsList} />}
+              element={<Properties friendsList={friendsList} user={user} />}
             />
             <Route path="/notification" element={<Notification />} />
             <Route path="/settings" element={<Settings user={user} />} />

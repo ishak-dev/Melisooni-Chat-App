@@ -27,7 +27,7 @@ const Sidebar = ({ user }) => {
             <Link to="/properties" className="link" onClick={openSidebar}>
               <li>
                 <FaHome className="icon" />
-                PROPERTIES
+                FRIENDS
               </li>
             </Link>
             <Link

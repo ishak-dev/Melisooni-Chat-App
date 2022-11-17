@@ -1,5 +1,6 @@
 .properties {
   padding: 67px 0px;
+  height: 100vh;
 }
 
 .properties-container {
@@ -87,7 +88,8 @@
 
 .search-users-btn {
   height: 40px;
+  margin-left: 10px;
   font-size: 24px;
   cursor: pointer;
-  color: #ae8cfa;
+  color: #d5c2ff;
 }
