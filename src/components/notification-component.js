@@ -3,7 +3,6 @@ import "../style/notification.css";
 const NotificationComponent = ({ activityFunc, activeMessageId, id }) => {
   const [showMessage, setShowMessage] = React.useState(false);
 
-  let active = false;
   function openMessage() {
     if (activeMessageId == id) return activityFunc();
     else return activityFunc(id);

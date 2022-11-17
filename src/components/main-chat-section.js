@@ -14,35 +14,35 @@ import {
   addDoc,
   Timestamp,
 } from "firebase/firestore";
-const MainChatSection = ({ user, pathFriends, friendName, chatSelected }) => {
+const MainChatSection = ({
+  user,
+  friendId,
+  friendName,
+  chatSelected,
+  chatId,
+}) => {
   const [message, setMessage] = useState(() => []);
-
+  //friendId  =  friend username
+  let path = "chat/" + chatId + "/messages";
   useEffect(() => {
     chatSelected
-      ? onSnapshot(
-          query(collection(db, pathFriends), orderBy("time")),
-          (snapshot) => {
-            setMessage(
-              snapshot.docs.map((doc) => ({
-                id: doc.id,
-                sender: doc.data().sender,
-                message: doc.data().message,
-              }))
-            );
-          }
-        )
+      ? onSnapshot(query(collection(db, path), orderBy("time")), (snapshot) => {
+          setMessage(
+            snapshot.docs.map((doc) => ({
+              id: doc.id,
+              sender: doc.data().sender,
+              message: doc.data().message,
+            }))
+          );
+        })
       : console.log("select chat");
-  }, [pathFriends]);
+  }, [path]);
 
   console.log(message);
   let messageListDOM = message.map((mess) => {
     return (
       <div className="message" key={mess.id}>
-        <p
-          className={
-            mess.sender != user.fullname ? "partner-mesage" : "my-message"
-          }
-        >
+        <p className={mess.sender != user.id ? "partner-mesage" : "my-message"}>
           {mess.message}
         </p>
       </div>
@@ -55,8 +55,8 @@ const MainChatSection = ({ user, pathFriends, friendName, chatSelected }) => {
     let messageFromInput = document.querySelector(".input-message").value;
 
     messageFromInput != "" &&
-      addDoc(collection(db, pathFriends), {
-        sender: user.fullname,
+      addDoc(collection(db, path), {
+        sender: user.id,
         message: messageFromInput,
         time: Timestamp.fromDate(new Date()),
       });
@@ -71,7 +71,7 @@ const MainChatSection = ({ user, pathFriends, friendName, chatSelected }) => {
           <img src={Profile1} />
         </div>
         <div className="chat-details">
-          <h4 className="chat-title">{friendName}</h4>
+          <h4 className="chat-title">{friendId}</h4>
           <p className="chat-message">From Sarajevo</p>
         </div>
       </div>

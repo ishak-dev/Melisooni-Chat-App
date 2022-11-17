@@ -15,7 +15,8 @@ const MainChatList = ({ friends, openFriendMessage }) => {
       <ChatHead
         key={friend.id}
         id={friend.id}
-        name={friend.name}
+        name={friend.id}
+        chatId={friend.chatId}
         message={"raleee"}
         openFriendMessage={openFriendMessage}
       />

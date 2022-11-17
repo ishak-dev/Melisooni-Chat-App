@@ -11,7 +11,7 @@ const Settings = ({ user }) => {
         <div className="first-row row">
           <div className="input-field">
             <p>Full Name</p> <span>visible to other members</span>
-            <input type="text" placeholder={user.fullname} />
+            <input type="text" placeholder={user.name} />
           </div>
           <div className="input-field">
             <p>Your email</p> <span>visible only to you</span>

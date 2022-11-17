@@ -22,8 +22,11 @@ import {
 const Home = () => {
   let [logged, setLogged] = React.useState(false);
   const [idInput, setIdInput] = React.useState("");
+  const [passInput, setPassInput] = React.useState("");
   const [user, setUser] = React.useState([]);
-  const path = "messenger-db/users/user-data/";
+  const [friendsList, setFriends] = React.useState([]);
+
+  const path = "users";
 
   React.useEffect(() => {
     let confirm = false;
@@ -31,8 +34,12 @@ const Home = () => {
     onSnapshot(collection(db, path), (snapshot) => {
       snapshot.docs.forEach((user, i) => {
         //check is there id in db that matches with inout id
-        console.log(i);
-        !confirm && user.id == idInput && (confirm = true) && (position = i);
+
+        !confirm &&
+          user.id == idInput &&
+          user.data().password == passInput &&
+          (confirm = true) &&
+          (position = i);
       });
 
       if (confirm === true) {
@@ -47,13 +54,31 @@ const Home = () => {
         setLogged(true);
       } else console.log("User Doesnt exist");
     });
-  }, [idInput]);
+  }, [idInput, passInput]);
+
+  React.useEffect(() => {
+    let dbpathFriends = "users/" + user.id + "/friends";
+
+    onSnapshot(collection(db, dbpathFriends), (snapshot) => {
+      console.log(snapshot.docs);
+      setFriends(
+        snapshot.docs.map((doc) => ({
+          id: doc.id,
+          name: doc.data().name,
+          chatId: doc.data().chatId,
+        }))
+      );
+    });
+  }, [user]);
 
   console.log(user);
+  console.log(friendsList + "");
 
   function getID() {
-    const id = document.querySelector(".input-id").value;
+    const id = document.querySelector("#input-id").value;
     setIdInput(id);
+    const pass = document.querySelector("#input-pass").value;
+    setPassInput(pass);
   }
 
   return (
@@ -61,8 +86,18 @@ const Home = () => {
       <div className="home-screen">
         <div className="login">
           <div className="login-window">
-            <h3 className="login-title">Please enter your ID</h3>
-            <input className="input-id" placeholder="#ID"></input>
+            <p className="login-title">Username </p>
+            <input
+              className="input-id"
+              id="input-id"
+              placeholder="Username"
+            ></input>
+            <p className="login-title">Password</p>
+            <input
+              className="input-id"
+              id="input-pass"
+              placeholder="Password"
+            ></input>
           </div>
           <button className="login-btn" onClick={getID}>
             Prijavi se
@@ -78,9 +113,12 @@ const Home = () => {
           <Routes>
             <Route
               path="/Melisooni-Chat-App"
-              element={<Main user={user} dbpath={path} />}
-            ></Route>
-            <Route path="/properties" element={<Properties />} />
+              element={<Main user={user} friendsList={friendsList} />}
+            />
+            <Route
+              path="/properties"
+              element={<Properties friendsList={friendsList} />}
+            />
             <Route path="/notification" element={<Notification />} />
             <Route path="/settings" element={<Settings user={user} />} />
           </Routes>

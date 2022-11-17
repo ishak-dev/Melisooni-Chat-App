@@ -8,7 +8,7 @@ const ChatHead = (friend) => {
   }
 
   function openFriendMessage() {
-    return friend.openFriendMessage(friend.id, friend.name);
+    return friend.openFriendMessage(friend.id, friend.name, friend.chatId);
   }
 
   return (

@@ -5,9 +5,7 @@ import MainChatList from "./main-chat-list";
 import MainChatSection from "./main-chat-section";
 import db from "../data/firebase";
 import { collection, onSnapshot } from "firebase/firestore";
-function Main({ user, dbpath }) {
-  const [friendsList, setFriends] = React.useState([]);
-
+function Main({ user, friendsList }) {
   const [currentMessageWindow, setCurrentMessageWindow] = React.useState(() => {
     return {
       id: "",
@@ -16,25 +14,12 @@ function Main({ user, dbpath }) {
     };
   });
 
-  let dbpathFriends = dbpath + user.id + "/friends";
-
-  useEffect(() => {
-    onSnapshot(collection(db, dbpathFriends), (snapshot) => {
-      console.log(snapshot.docs);
-      setFriends(
-        snapshot.docs.map((doc) => ({
-          id: doc.id,
-          name: doc.data().name,
-        }))
-      );
-    });
-  }, []);
-
-  function openFriendMessage(id, friendName) {
+  function openFriendMessage(id, friendName, chatId) {
     setCurrentMessageWindow(() => {
       return {
         id: id,
         friendName: friendName,
+        chatId: chatId,
         chatSelected: true,
       };
     });
@@ -52,10 +37,9 @@ function Main({ user, dbpath }) {
       />
       <MainChatSection
         user={user}
-        pathFriends={
-          dbpathFriends + "/" + currentMessageWindow.id + "/messages"
-        }
+        friendId={currentMessageWindow.id}
         friendName={currentMessageWindow.friendName}
+        chatId={currentMessageWindow.chatId}
         chatSelected={currentMessageWindow.chatSelected}
       />
     </div>
