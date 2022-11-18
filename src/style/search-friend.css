@@ -1,0 +1,55 @@
+.search-friend-section {
+  background-color: rgba(240, 248, 255, 0.589);
+  width: 100%;
+  height: 100%;
+  top: 0;
+  position: absolute;
+}
+.search-friend-container {
+  background-color: aliceblue;
+  width: 60vw;
+
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20%;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.find-friend-input {
+  width: 100%;
+  height: 40px;
+  outline: none;
+  border: none;
+  padding: 20px;
+}
+
+.user-container {
+  display: flex;
+  padding: 0px 15px;
+  border-bottom: 1px solid rgb(255, 255, 255);
+}
+
+.user-add-data {
+  margin-right: auto;
+}
+
+.user-name {
+  margin-bottom: 2px;
+}
+.user-username {
+  margin-top: 0;
+  font-size: 14px;
+  background-color: rgb(237, 176, 255);
+  border-radius: 12px;
+  width: max-content;
+  padding: 2px 5px;
+}
+
+.add-user-btn {
+  font-weight: bold;
+  color: rgb(0, 81, 255);
+  cursor: pointer;
+  margin-top: auto;
+  margin-bottom: auto;
+}
